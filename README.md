@@ -31,7 +31,7 @@ If you haven't created your MongoDB Cluster follow part 1 - 4:
 
 * [Get Started with Atlas](https://docs.atlas.mongodb.com/getting-started/)
 
-### Part 1: Connecting my MongoDB Cluster with Spring Boot
+### Part 2: Connecting my MongoDB Cluster with Spring Boot
 
 1. Login into your [MongoDB Atlas account](https://account.mongodb.com/account/login)
 2. Click *connect* on the cluster you created on Part 1:
@@ -60,36 +60,138 @@ If you haven't created your MongoDB Cluster follow part 1 - 4:
     ```
 8. Run your project and verify that the connection is successful.
 
-**Java:**
+### Part 3: Implementing the MongoDB Service
 
- ```java
-     public interface UserService
-{
-   User create( User user );
+1. Create a new package called *repository*.
+2. Create a new class called *UserDocument*:
 
-   User findById( String id );
-
-   List<User> all();
-
-         void deleteById( String id );
-
-         User update( User user, String userId );
-     }
-  ```
-  **Kotlin:**
-  ```kotlin
-      interface UserService {
-
-         fun create( user: User): User
-
-         fun findById( String id ): User?
-         
-         fun  all(): List<User>
-
-         fun deleteById( String id )
-
-         fun update( User user, String userId ): User
-
+   **Java:**
+    ```java
+      import org.springframework.data.annotation.Id;
+      import org.springframework.data.mongodb.core.index.Indexed;
+      import org.springframework.data.mongodb.core.mapping.Document;
+      
+      import java.util.Date;
+      
+      @Document
+      public class UserDocument
+      {
+         @Id
+         String id;
+      
+         String name;
+      
+         @Indexed( unique = true )
+         String email;
+      
+         String lastName;
+      
+         Date createdAt;
+      
+         public UserDocument()
+         {
+         }
       }
-  ```
+   
+     ```
+   **Kotlin:**
+     ```kotlin
+         @Document
+         class User(
+            @Id var id: String?,
+            var name: String,
+            var lastName: String,
+            @Indexed(unique = true)
+            var email: String,
+            var createdAt: Date
+         )
+     ```
+3. Create a new interface called *UserRepository* inside the repository package:
 
+   **Java:**
+    ```java
+      import org.springframework.data.mongodb.repository.MongoRepository;
+      
+      public interface UserRepository extends MongoRepository<UserDocument, String>
+      {}
+     ```
+   **Kotlin:**
+     ```kotlin
+         interface UserRepository: MongoRepository<UserDocument, String>
+     ```
+
+4. Create a new *UserService* implementation called *UserServiceMongoDB* and inject inside the *UserRepository*:
+
+   **Java:**
+      ```java
+         import java.util.List;
+         
+         public class UserServiceMongoDB
+         implements UserService
+         {
+         
+             private final UserRepository userRepository;
+         
+             public UserServiceMongoDB(@Autowired UserRepository userRepository )
+             {
+                 this.userRepository = userRepository;
+             }
+         
+             @Override
+             public User create( User user )
+             {
+                 return null;
+             }
+         
+             @Override
+             public User findById( String id )
+             {
+                 return null;
+             }
+         
+             @Override
+             public List<User> all()
+             {
+                 return null;
+             }
+         
+             @Override
+             public boolean deleteById( String id )
+             {
+                 return false;
+             }
+         
+             @Override
+             public User update( UserDto userDto, String id )
+             {
+                 return null;
+             }
+         }
+    ```
+
+   **Kotlin:**
+     ```kotlin
+         class UserServiceMongoDB(@Autowired private val userRepository: UserRepository) : UserService {
+         override fun create(user: User): User? {
+         return null
+         }
+         
+             override fun findById(id: String): User? {
+                 return null
+             }
+         
+             override fun all(): List<User>? {
+                 return null
+             }
+         
+             override fun deleteById(id: String): Boolean {
+                 return false
+             }
+         
+             override fun update(userDto: UserDto, id: String): User? {
+                 return null
+             }
+         }         
+     ```
+5. Implement the methods of the *UserServiceMongoDB* interacting with the *UserRepository*.
+6. Test your API and verify that your data is store in your cluster.
