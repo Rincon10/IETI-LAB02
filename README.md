@@ -21,9 +21,14 @@ Read the following document [Attention to details](https://www.csu.edu/humanreso
 * MongoDB.
 * Cluster.
 
+
+
 ## Codelab 🧪
 
 🗣️ "I hear and I forget I see and I remember I do and I understand." Confucius
+
+
+
 
 ### Part 1: Creating your Atlas account and first cluster:
 
