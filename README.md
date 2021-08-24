@@ -47,7 +47,8 @@ If you haven't created your MongoDB Cluster follow part 1 - 4:
     ````
 7. Add the environment variable to IntelliJ Idea by editing the Run/Debug Configurations:
    <img align="center" src="img/run-debug-configurations.png">
-   <br/>
+   
+   
    <img align="center" src="img/adding-environment-variable.png">
 7. Add the Spring Boot starter data MongoDB dependency to your *build.gradle*:
     ```groovy
