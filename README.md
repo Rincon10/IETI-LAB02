@@ -193,5 +193,5 @@ If you haven't created your MongoDB Cluster follow part 1 - 4:
              }
          }         
      ```
-5. Implement the methods of the *UserServiceMongoDB* interacting with the *UserRepository*.
+5. Implement the methods of the *UserServiceMongoDB* using with the *UserRepository*.
 6. Test your API and verify that your data is store in your cluster.
