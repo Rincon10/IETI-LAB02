@@ -11,22 +11,21 @@
 - Connect your Spring Boot project with a MongoDB Cluster.
 
 
-## Growth Mindset 🤹🏽
+## Detail Orientation 🤹🏽
 
-"Individuals who believe their talents can be developed (through hard work, good strategies, and input from others) have a growth mindset. They tend to achieve more than those with a more fixed mindset (those who believe their talents are innate gifts)" [What Having a "Growth Mindset" Actually means - Harvard Business Review](https://hbr.org/2016/01/what-having-a-growth-mindset-actually-means)  
+Read the following document [Attention to details)[https://www.csu.edu/humanresources/empdev/documents/AttentiontoDetail.pdf]  
 
 
 **Main Topics**
- * Microservices.
- * RESTFUL API.
- * Richardson Maturity Model.
- * Dependencies Injection.
+ * NoSQL.
+ * MongoDB.
+ * Cluster.
 
 ## Codelab 🧪
 
 🗣️ "I hear and I forget I see and I remember I do and I understand." Confucius
 
-### Part 1: Implementing the Users Microservice RESTFUL API
+### Part 1: Connecting my MongoDB Cluster with Srping Boot
 
 1. Create a new project using the [Spring Initializr](https://start.spring.io/)
   * Use either *Java* or *Kotlin* as programming language.
