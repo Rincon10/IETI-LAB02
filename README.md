@@ -13,7 +13,7 @@
 
 ## Detail Orientation 🤹🏽
 
-Read the following document [Attention to details)[https://www.csu.edu/humanresources/empdev/documents/AttentiontoDetail.pdf] 
+Read the following document [Attention to details](https://www.csu.edu/humanresources/empdev/documents/AttentiontoDetail.pdf) 
 
 **Main Topics**
 
