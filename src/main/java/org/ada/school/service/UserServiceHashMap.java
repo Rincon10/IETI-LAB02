@@ -1,7 +1,7 @@
-package com.example.demo.service;
+package org.ada.school.service;
 
-import com.example.demo.dto.UserDto;
-import com.example.demo.model.User;
+import org.ada.school.dto.UserDto;
+import org.ada.school.model.User;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

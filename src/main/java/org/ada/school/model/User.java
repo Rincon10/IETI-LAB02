@@ -1,6 +1,6 @@
-package com.example.demo.model;
+package org.ada.school.model;
 
-import com.example.demo.dto.UserDto;
+import org.ada.school.dto.UserDto;
 
 import java.util.Date;
 import java.util.UUID;

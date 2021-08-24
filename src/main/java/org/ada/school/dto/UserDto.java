@@ -1,4 +1,4 @@
-package com.example.demo.dto;
+package org.ada.school.dto;
 
 public class UserDto
 {
