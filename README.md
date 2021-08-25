@@ -198,6 +198,6 @@ If you haven't created your MongoDB Cluster follow part 1 - 4:
              }
          }         
      ```
-5. Implement the methods of the *UserServiceMongoDB* using with the *UserRepository*.
+5. Implement the methods of the *UserServiceMongoDB* using the *UserRepository*.
 6. Remove the *@Service* annotation from the *UserServiceHashMap* and add it to the *UserServiceMongoDB*.
 7. Test your API and verify that your data is stored in your cluster.
