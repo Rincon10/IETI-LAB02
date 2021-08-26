@@ -202,7 +202,7 @@ If you haven't created your MongoDB Cluster follow part 1 - 4:
 6. Remove the *@Service* annotation from the *UserServiceHashMap* and add it to the *UserServiceMongoDB*.
 7. Test your API and verify that your data is stored in your cluster.
 
-### Challenge Yourself: Implement complex queries using the Spring Data interface
+### Challenge Yourself: Implement complex queries using the Spring Data Query Methods
 1. Modify the *UserService* interface adding the following methods:
 
    **Java:**
