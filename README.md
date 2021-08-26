@@ -201,3 +201,24 @@ If you haven't created your MongoDB Cluster follow part 1 - 4:
 5. Implement the methods of the *UserServiceMongoDB* using the *UserRepository*.
 6. Remove the *@Service* annotation from the *UserServiceHashMap* and add it to the *UserServiceMongoDB*.
 7. Test your API and verify that your data is stored in your cluster.
+
+### Challenge Yourself: Implement complex queries using the Spring Data interface
+1. Modify the *UserService* interface adding the following methods:
+
+   **Java:**
+    ```java
+        List<User> findUsersWithNameOrLastNameLike(String queryText);
+        
+        List<User> findUsersCreatedAfter(Date startDate);
+      {}
+     ```
+   **Kotlin:**
+     ```kotlin
+        fun findUsersWithNameOrLastNameLike(queryText: String): List<User>
+        
+        fun findUsersCreatedAfter(startDate: Date): List<User>
+     ```
+***Tip: take a look at the official documenation and learn how to create custom queries with [Spring Data](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods.query-creation)
+
+    
+
