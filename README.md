@@ -218,7 +218,7 @@ If you haven't created your MongoDB Cluster follow part 1 - 4:
         
         fun findUsersCreatedAfter(startDate: Date): List<User>
      ```
-***Tip***: take a look at the official documenation and learn how to create custom queries with [Spring Data](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods.query-creation)
+***Tip***: take a look at the official documentation and learn how to create custom queries with [Spring Data](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods.query-creation)
 
     
 
