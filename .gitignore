@@ -1,7 +1,7 @@
 /.idea
 /.gradle
 /build
-
+/bin
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
@@ -35,3 +35,10 @@ build/
 
 ### VS Code ###
 .vscode/
+
+.env
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
