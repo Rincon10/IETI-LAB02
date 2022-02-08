@@ -13,7 +13,7 @@ import java.util.List;
  * @version 1.0 2/3/2022
  * @project user-api
  */
-@Service
+
 public class UserServiceMongoDB implements UserService {
     private final UserRepository userRepository;
 
