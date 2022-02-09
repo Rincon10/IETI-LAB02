@@ -1,9 +1,4 @@
-<img align="right" src="https://github.com/ada-school/module-template/blob/main/ada.png">
-
-
-## Spring Boot Data with MongoDB
-
-**Learning Objectives**
+## Goals
 
 - Explain what MongoDB is.
 - Explain the difference between SQL and NoSQL.
@@ -15,7 +10,8 @@
 
 Read the following document [Attention to details](https://www.csu.edu/humanresources/empdev/documents/AttentiontoDetail.pdf) 
 
-**Main Topics**
+
+## Main Topics
 
 * NoSQL.
 * MongoDB.
@@ -26,8 +22,6 @@ Read the following document [Attention to details](https://www.csu.edu/humanreso
 ## Codelab 🧪
 
 🗣️ "I hear and I forget I see and I remember I do and I understand." Confucius
-
-
 
 
 ### Part 1: Creating your Atlas account and first cluster:
@@ -68,9 +62,8 @@ If you haven't created your MongoDB Cluster follow part 1 - 4:
 ### Part 3: Implementing the MongoDB Service
 
 1. Create a new package called *repository*.
-2. Create a new class called *UserDocument*:
+2. Modify your current **User** class to use MongoDB notations:
 
-   **Java:**
     ```java
       import org.springframework.data.annotation.Id;
       import org.springframework.data.mongodb.core.index.Indexed;
@@ -79,7 +72,7 @@ If you haven't created your MongoDB Cluster follow part 1 - 4:
       import java.util.Date;
       
       @Document
-      public class UserDocument
+      public class User
       {
          @Id
          String id;
@@ -93,41 +86,21 @@ If you haven't created your MongoDB Cluster follow part 1 - 4:
       
          Date createdAt;
       
-         public UserDocument()
+         public User()
          {
          }
       }
    
      ```
-   **Kotlin:**
-     ```kotlin
-         @Document
-         class User(
-            @Id var id: String?,
-            var name: String,
-            var lastName: String,
-            @Indexed(unique = true)
-            var email: String,
-            var createdAt: Date
-         )
-     ```
 3. Create a new interface called *UserRepository* inside the repository package:
-
-   **Java:**
     ```java
       import org.springframework.data.mongodb.repository.MongoRepository;
       
-      public interface UserRepository extends MongoRepository<UserDocument, String>
+      public interface UserRepository extends MongoRepository<User, String>
       {}
      ```
-   **Kotlin:**
-     ```kotlin
-         interface UserRepository: MongoRepository<UserDocument, String>
-     ```
-
 4. Create a new *UserService* implementation called *UserServiceMongoDB* and inject inside the *UserRepository*:
 
-   **Java:**
       ```java
          import java.util.List;
          
@@ -174,51 +147,22 @@ If you haven't created your MongoDB Cluster follow part 1 - 4:
          }
     ```
 
-   **Kotlin:**
-     ```kotlin
-         class UserServiceMongoDB(@Autowired private val userRepository: UserRepository) : UserService {
-         override fun create(user: User): User? {
-         return null
-         }
-         
-             override fun findById(id: String): User? {
-                 return null
-             }
-         
-             override fun all(): List<User>? {
-                 return null
-             }
-         
-             override fun deleteById(id: String): Boolean {
-                 return false
-             }
-         
-             override fun update(userDto: UserDto, id: String): User? {
-                 return null
-             }
-         }         
-     ```
 5. Implement the methods of the *UserServiceMongoDB* using the *UserRepository*.
 6. Remove the *@Service* annotation from the *UserServiceHashMap* and add it to the *UserServiceMongoDB*.
 7. Test your API and verify that your data is stored in your cluster.
 
 ### Challenge Yourself: Implement complex queries using the Spring Data Query Methods
 1. Modify the *UserService* interface adding the following methods:
-
-   **Java:**
     ```java
         List<User> findUsersWithNameOrLastNameLike(String queryText);
         
         List<User> findUsersCreatedAfter(Date startDate);
       {}
      ```
-   **Kotlin:**
-     ```kotlin
-        fun findUsersWithNameOrLastNameLike(queryText: String): List<User>
-        
-        fun findUsersCreatedAfter(startDate: Date): List<User>
-     ```
+ 
+2.  Add those 2 new mapping methods on the controller.
+3. Test your API, verify that queries work. 
+   
 ***Tip***: take a look at the official documentation and learn how to create custom queries with [Spring Data](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods.query-creation)
 
     
-
