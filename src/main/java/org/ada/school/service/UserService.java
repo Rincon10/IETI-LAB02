@@ -16,4 +16,8 @@ public interface UserService
     boolean deleteById( String id );
 
     User update( UserDto userDto, String id );
+
+    List<User> findUsersWithNameOrLastNameLike(String queryText);
+
+    List<User> findUsersCreatedAfter(String startDate);
 }

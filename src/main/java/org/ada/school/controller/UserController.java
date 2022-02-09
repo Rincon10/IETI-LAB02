@@ -11,50 +11,53 @@ import org.modelmapper.ModelMapper;
 import java.util.List;
 
 @RestController
-@CrossOrigin( origins = "*" )
-@RequestMapping( "/api/v1/user" )
-public class UserController
-{
+@CrossOrigin(origins = "*")
+@RequestMapping("/api/v1/user")
+public class UserController {
 
     private final UserService userService;
 
-    public UserController( @Autowired UserService userService )
-    {
+    public UserController(@Autowired UserService userService) {
         this.userService = userService;
     }
 
 
     @GetMapping
-    public ResponseEntity<List<User>> all()
-    {
-        return ResponseEntity.ok( userService.all() );
+    public ResponseEntity<List<User>> all() {
+        return ResponseEntity.ok(userService.all());
     }
 
-    @GetMapping( "/{id}" )
-    public ResponseEntity<User> findById( @PathVariable String id )
-    {
-        return ResponseEntity.ok( userService.findById( id ) );
+    @GetMapping("/{id}")
+    public ResponseEntity<User> findById(@PathVariable String id) {
+        return ResponseEntity.ok(userService.findById(id));
+    }
+
+    @GetMapping("/createdAfter/{date}")
+    public ResponseEntity<List<User>> findUsersCreatedAfter(@PathVariable String date) {
+        return ResponseEntity.ok(userService.findUsersCreatedAfter(date));
+    }
+
+    @GetMapping("/like/{pattern}")
+    public ResponseEntity<List<User>> findUsersWithNameOrLastNameLike(@PathVariable String pattern) {
+        return ResponseEntity.ok(userService.findUsersWithNameOrLastNameLike(pattern));
     }
 
 
     @PostMapping
-    public ResponseEntity<User> create( @RequestBody UserDto userDto )
-    {
+    public ResponseEntity<User> create(@RequestBody UserDto userDto) {
         ModelMapper modelMapper = new ModelMapper();
         User user = modelMapper.map(userDto, User.class);
-        return ResponseEntity.ok( userService.create( user ) );
+        return ResponseEntity.ok(userService.create(user));
     }
 
-    @PutMapping( "/{id}" )
-    public ResponseEntity<User> update( @RequestBody UserDto userDto, @PathVariable String id )
-    {
-        return ResponseEntity.ok( userService.update( userDto, id ) );
+    @PutMapping("/{id}")
+    public ResponseEntity<User> update(@RequestBody UserDto userDto, @PathVariable String id) {
+        return ResponseEntity.ok(userService.update(userDto, id));
     }
 
-    @DeleteMapping( "/{id}" )
-    public ResponseEntity<Boolean> delete( @PathVariable String id )
-    {
-        return ResponseEntity.ok( userService.deleteById( id ) );
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Boolean> delete(@PathVariable String id) {
+        return ResponseEntity.ok(userService.deleteById(id));
     }
 
 }
