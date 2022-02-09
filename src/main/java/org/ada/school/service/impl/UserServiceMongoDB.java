@@ -1,8 +1,9 @@
-package org.ada.school.service;
+package org.ada.school.service.impl;
 
 import org.ada.school.dto.UserDto;
 import org.ada.school.model.User;
 import org.ada.school.repository.UserRepository;
+import org.ada.school.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,7 @@ import java.util.List;
  * @project user-api
  */
 
+@Service
 public class UserServiceMongoDB implements UserService {
     private final UserRepository userRepository;
 
@@ -23,21 +25,27 @@ public class UserServiceMongoDB implements UserService {
     }
 
     @Override
-    public User create( User user )
-    {
-        return null;
+    public User create( User user ) {
+        System.out.println("*****************************************************************************");
+        System.out.println(user.getId());
+        System.out.println(user.getName());
+        System.out.println(user.getEmail());
+        System.out.println("*****************************************************************************");
+
+        userRepository.save(user);
+        return user;
     }
 
     @Override
     public User findById( String id )
     {
-        return null;
+        return userRepository.findById(id).get();
     }
 
     @Override
     public List<User> all()
     {
-        return null;
+        return userRepository.findAll();
     }
 
     @Override

@@ -5,19 +5,14 @@ import org.ada.school.model.User;
 import org.ada.school.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.modelmapper.ModelMapper;
 
 import java.util.List;
 
 @RestController
-@RequestMapping( "/user" )
+@CrossOrigin( origins = "*" )
+@RequestMapping( "/api/v1/user" )
 public class UserController
 {
 
@@ -45,7 +40,9 @@ public class UserController
     @PostMapping
     public ResponseEntity<User> create( @RequestBody UserDto userDto )
     {
-        return ResponseEntity.ok( userService.create( new User( userDto ) ) );
+        ModelMapper modelMapper = new ModelMapper();
+        User user = modelMapper.map(userDto, User.class);
+        return ResponseEntity.ok( userService.create( user ) );
     }
 
     @PutMapping( "/{id}" )
